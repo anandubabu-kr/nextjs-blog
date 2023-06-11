@@ -5,6 +5,9 @@ import Provider from "@components/Provider";
 export const metadata = {
   title: "Promtia",
   description: "app description",
+  icons: {
+    icon: "/assets/logo.svg",
+  },
 };
 
 const RootLayout = ({ children }) => {
@@ -13,7 +16,7 @@ const RootLayout = ({ children }) => {
       <body>
         <Provider>
           <Nav />
-          <main>{children}</main>
+          <main className="px-2">{children}</main>
         </Provider>
       </body>
     </html>

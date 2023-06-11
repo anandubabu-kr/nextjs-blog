@@ -8,7 +8,10 @@ import { usePathname, useRouter } from "next/navigation";
 // useRouter;
 
 const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
-  console.log(post);
+  // console.log(post);
+  const { data: session } = useSession();
+  const pathName = usePathname();
+  const router = useRouter();
   const [copy, setCopy] = useState("");
 
   const handleCopy = () => {
@@ -16,6 +19,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
     navigator.clipboard.writeText(post.prompt);
     setTimeout(() => setCopy(""), 3000);
   };
+
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
@@ -52,13 +56,32 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           )}
         </div>
       </div>
-      <p className="mt-21">{post?.prompt}</p>
-      <div
+      <p className="mt-21 h-24 overflow-hidden truncate/ text-ellipsis">
+        {post?.prompt}
+      </p>
+      <p
         onClick={handleTagClick && handleTagClick(post.tag)}
         className="mt-2 text-blue-900 bg-blue-100 px-1 rounded-md w-fit cursor-pointer hover:underline duration-100"
       >
         {post?.tag}
-      </div>
+      </p>
+
+      {session?.user.id === post?.creator._id && pathName === "/profile" && (
+        <div className="mt-2 flex justify-end">
+          <button
+            className="font-inter bg-blue-50 px-2 mt-2 text-green-600 rounded-md"
+            onClick={() => handleEdit(post)}
+          >
+            edit
+          </button>
+          <button
+            className="font-inter bg-red-50 px-2 mt-2 text-red-600 rounded-md"
+            onClick={() => handleDelete(post)}
+          >
+            delete
+          </button>
+        </div>
+      )}
     </div>
   );
 };

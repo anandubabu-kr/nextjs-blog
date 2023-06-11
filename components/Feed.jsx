@@ -6,7 +6,9 @@ import PromptCard from "./PromptCard";
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [posts, setPosts] = useState([]);
-  const handleSearchText = (e) => {};
+  const handleSearchText = (e) => {
+    setSearchText(e.target.value);
+  };
   const handleTagClick = (e) => {};
 
   useEffect(() => {

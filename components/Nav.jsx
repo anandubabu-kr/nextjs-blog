@@ -17,21 +17,17 @@ const Nav = () => {
     setUpProviders();
   }, []);
 
-  const open = () => {
-    setopenMenu(!openMenu);
-  };
-
   return (
-    <nav className="flex-between px-6 sticky top-0">
+    <nav className="flex-between px-6 sticky top-0 bg-white">
       <Link href={"/"} className="flex gap-2 flex-center py-2   ">
         <Image
-          src={"/assets/pic.png"}
+          src={"/assets/image.png"}
           width={40}
           height={40}
           alt="App"
           className="object-contain rounded-full"
         />
-        <div className="logo_text">menu</div>
+        <div className="logo_text">Promtia</div>
       </Link>
       <div className="sm:flex hidden">
         {session?.user ? (

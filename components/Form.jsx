@@ -54,7 +54,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             type="submit"
             disabled={submitting}
           >
-            {submitting ? "in progress..." : "create"}
+            {submitting ? "in progress..." : type}
           </button>
         </div>
       </form>
